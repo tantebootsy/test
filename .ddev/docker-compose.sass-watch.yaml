@@ -1,0 +1,18 @@
+services:
+  sass-watch:
+    container_name: ddev-${DDEV_SITENAME}-sass-watch
+    image: michalklempa/dart-sass:latest
+    user: "501:20"
+    labels:
+      #com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - type: volume
+        source: sass
+        target: /var/www/html/public/sass
+      - type: volume
+        source: css
+        target: /var/www/html/public/css
+volumes:
+  sass:
+  css:
